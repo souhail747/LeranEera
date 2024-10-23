@@ -1,15 +1,14 @@
-import Box from '@mui/material/Box';
-import Dialog from '@mui/material/Dialog';
+import { Box, Dialog } from "@mui/material";
 import  AccountCircleIcon  from "@mui/icons-material/AccountCircle";
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 import TextField from '@mui/material/TextField';
-//login
 
 
-// eslint-disable-next-line react/prop-types
+
+
 function Login ({setlog}) {
     const handleClose = () => {
         setlog(false);
@@ -19,15 +18,10 @@ function Login ({setlog}) {
         onClose={handleClose} 
         PaperProps={{sx:{
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)',
-            
-            smwidth : "452px",
-            height : "618px",
+            width : "452px",
+            height : "625px",
             bgcolor : "white",
             padding : "0 20px 0 20px",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
             borderRadius : "50px",
             display : "flex",
             flexDirection : "column",
@@ -36,7 +30,7 @@ function Login ({setlog}) {
 
             <AccountCircleIcon
             sx={{
-                margin : "-36px auto 0 auto",
+                margin : "5px auto 0 auto",
                 width: "108px",
                 height: "108px",
                 color : "#2cccc4",
@@ -49,7 +43,7 @@ function Login ({setlog}) {
                 fontSize : "30px",
                 fontWeight: "700",
                 lineHeight: "1.2",
-                margin : "30px auto 0 auto",
+                margin : "20px auto 0 auto",
             }}
             >
             Welcome Back

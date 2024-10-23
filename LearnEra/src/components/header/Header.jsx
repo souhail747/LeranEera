@@ -9,6 +9,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Login from "../Login";
+import Signup from "../Signup/Signup";
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -45,6 +46,10 @@ export default function Header() {
   const [log, setlog] =  useState(false);
   const openlog = () => {
     setlog(true);
+  } 
+  const [sign, setsign] =  useState(false);
+  const opensign = () => {
+    setsign(true);
   } 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -150,7 +155,7 @@ export default function Header() {
           Log In
         </Button>
         {log && <Login setlog={setlog} />}
-        <Button
+        <Button onClick={opensign}
           sx={{ bgcolor: " #219ebc", color: "black", padding: "10px" ,width:"7vw"}}
           id="demo-positioned-button"
           aria-controls={open ? "demo-positioned-menu" : undefined}
@@ -159,6 +164,7 @@ export default function Header() {
                   >
           Sign Up
         </Button>
+        {sign && <Signup setsign={setsign} />}
       </Stack>
       </Stack>
     </Box>
