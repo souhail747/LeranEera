@@ -12,6 +12,7 @@ import Login from "../Login";
 import Signup from "../Signup/Signup";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
+import PhMenu from "./PhMenu";
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -44,6 +45,7 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
+
 export default function Header() {
   const [log, setlog] = useState(false);
   const openlog = () => {
@@ -61,19 +63,28 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [first, setfirst] = useState(false) 
+
+  const handleMenu = () => {
+
+    setfirst(true)
+
+  };
   return (
+    <>
     <Box
       component="header"
       className="border"
       sx={{
-        padding: "10px",
+     padding: "10px",
+
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
       }}
     >
-        <IconButton sx={{ display: { xs: "blcok", md: "none" } }}>
+        <IconButton onClick={handleMenu}  sx={{ display: { xs: "blcok", md: "none" } }}>
         <MenuIcon />
       </IconButton>
       <img width="200px" height="50vh" src="./src/Images/a.png" alt="" />
@@ -197,5 +208,7 @@ export default function Header() {
         <SearchIcon />
       </IconButton>
     </Box>
+           { first &&  <PhMenu setfirst={setfirst} setsign={setsign} setlog={setlog} /> }            
+            </>
   );
 }

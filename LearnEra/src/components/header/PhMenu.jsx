@@ -1,37 +1,48 @@
-import { Box, Stack } from "@mui/material";
-import { IconButton } from "@mui/material";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from "react";
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
-function PhMenu () {
-    const [state, setState] = useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-      });
-    const toggleDrawer =
-    (anchor, open) =>
-      (event) => {
-        if (
-          event.type === 'keydown' &&
-          ((event.key) === 'Tab' ||
-            (event.key) === 'Shift')
-        ) {
-          return;
-        }
+import Dialog from '@mui/material/Dialog';
+// eslint-disable-next-line react/prop-types
+function PhMenu ({setfirst,setsign,setlog}) {
+    const handleMenu = () => {
 
-        setState({ ...state, [anchor]: open });
-      };
+        setfirst(false)
+    
+      };
+      const openSignup = () => {
+
+        setsign(true)    
+      };
+      const openLogin = () => {
+
+        setlog(true)    
+      };
+      
+      const handleSignup =() => {
+        handleMenu();
+        openSignup();
+      }
+      const handleLogin =() => {
+        handleMenu();
+        openLogin();
+      }
+    
     return (
-        <Box
+        <Dialog
+        open={true}
+        fullScreen
             sx={{
+
                 height:'100%',
                 width:'100%',
                 display:'flex',
                 flexDirection:'column',
-                
+       
+                maxHeight:"100%",
+                maxWidth:"100%",
             }}
         >
             <Box
@@ -53,17 +64,17 @@ function PhMenu () {
                 sx={{ ":hover": { rotate: "360deg", transition: "0.3s", color: "#2cccc4" },
                 position: "absolute",  
                 top: '2vh',
-                right: '5px'
+                right: '15px'
                 }} 
-                onClick={toggleDrawer("top", false)
+                onClick={  handleMenu
                 }>
                     <CloseIcon
                         sx={{
                             width:'30px',
                             height:'30px',
                         }}
-                    />
-                </IconButton>
+            />
+          </IconButton>
             </Box>
             <Stack>
                 <Link href="#" underline="hover"
@@ -117,7 +128,7 @@ function PhMenu () {
                     bgcolor: 'whitesmoke'
                 }}
             >
-            <Button variant="contained"
+            <Button variant="contained" onClick={handleSignup}
                     sx={{
                         width: "90%",
                         height: "46px",
@@ -129,7 +140,7 @@ function PhMenu () {
                     >
                     Join for free
                 </Button>
-                <Button variant="contained"
+                <Button variant="contained" onClick={handleLogin}
                     sx={{
                         width: "90%",
                         height: "46px",
@@ -137,14 +148,15 @@ function PhMenu () {
                         fontSize : "16px",
                         margin : "auto",
                         color:'#2cccc4',
-                        backgroundColor:'white',
+                        textAlign:"center"
+,                        backgroundColor:'white',
                         border : '1px solid #2cccc4'
                     }}
                     >
                     Log in
                 </Button>
             </Stack>
-        </Box>
+        </Dialog>
     );
 }
 export default PhMenu
