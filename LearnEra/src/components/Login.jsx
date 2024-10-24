@@ -1,4 +1,5 @@
-import { Box, Dialog } from "@mui/material";
+import Box from '@mui/material/Box';
+import Dialog from '@mui/material/Dialog';
 import  AccountCircleIcon  from "@mui/icons-material/AccountCircle";
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
@@ -9,6 +10,7 @@ import TextField from '@mui/material/TextField';
 
 
 
+// eslint-disable-next-line react/prop-types
 function Login ({setlog}) {
     const handleClose = () => {
         setlog(false);
