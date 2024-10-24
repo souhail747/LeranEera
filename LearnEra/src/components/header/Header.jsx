@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Login from "../Login";
 import Signup from "../Signup/Signup";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from '@mui/icons-material/Menu';
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -43,14 +45,14 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 export default function Header() {
-  const [log, setlog] =  useState(false);
+  const [log, setlog] = useState(false);
   const openlog = () => {
     setlog(true);
-  } 
-  const [sign, setsign] =  useState(false);
+  };
+  const [sign, setsign] = useState(false);
   const opensign = () => {
     setsign(true);
-  } 
+  };
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -64,18 +66,21 @@ export default function Header() {
       component="header"
       className="border"
       sx={{
-        padding:"10px",
+        padding: "10px",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent:"space-around"
+        justifyContent: "space-between",
       }}
     >
+        <IconButton sx={{ display: { xs: "blcok", md: "none" } }}>
+        <MenuIcon />
+      </IconButton>
       <img width="200px" height="50vh" src="./src/Images/a.png" alt="" />
       <Search
-
         sx={{
-          display: "flex",
+          display: { xs: "none", md: "flex" },
+
           alignItems: "center",
           color: "black",
           bgcolor: "#e9ecef",
@@ -95,78 +100,102 @@ export default function Header() {
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
-      <Stack sx={{flexDirection:"row",gap:"25px"}}>
-      <Box
+      <Stack
         sx={{
-          display:"flex",
-          justifyContent:"center",
-          alignItems:"center"
+          display: { xs: "none", md: "flex" },
+
+          flexDirection: "row",
+          gap: "25px",
         }}
       >
-        <Button
-          id="demo-positioned-button"
-          aria-controls={open ? "demo-positioned-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          Categories
-        </Button>
-        <Menu
+        <Box
           sx={{
-            "& .MuiMenu-paper": {
-              marginTop: "35px",
-            },
-          }}
-          id="demo-positioned-menu"
-          aria-labelledby="demo-positioned-button"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu>
-      </Box>
-      <Box
-        component="button"
-        sx={{ color: "#333333", "&:hover": { color: "#2c7da0" } }}
-      >
-        <LocalGroceryStoreIcon />
-      </Box>
-      <Stack sx={{ gap: "8px", flexDirection: "row" }}>
-        <Button onClick={openlog}
-          sx={{ bgcolor: " #219ebc", color: "black", padding: "10px",width:"7vw" }}
-          id="demo-positioned-button"
-          aria-controls={open ? "demo-positioned-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          
+          <Button
+            id="demo-positioned-button"
+            aria-controls={open ? "demo-positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            Categories
+          </Button>
+          <Menu
+            sx={{
+              "& .MuiMenu-paper": {
+                marginTop: "35px",
+              },
+            }}
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Menu>
+        </Box>
+        <Box
+          component="button"
+          sx={{ color: "#333333", "&:hover": { color: "#2c7da0" } }}
         >
-          Log In
-        </Button>
-        {log && <Login setlog={setlog} />}
-        <Button onClick={opensign}
-          sx={{ bgcolor: " #219ebc", color: "black", padding: "10px" ,width:"7vw"}}
-          id="demo-positioned-button"
-          aria-controls={open ? "demo-positioned-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-                  >
-          Sign Up
-        </Button>
-        {sign && <Signup setsign={setsign} />}
+          <LocalGroceryStoreIcon />
+        </Box>
+        <Stack sx={{ gap: "8px", flexDirection: "row" }}>
+          <Button
+            onClick={openlog}
+            sx={{
+              bgcolor: " #219ebc",
+              display: { xs: "none", md: "block" },
+              color: "black",
+              padding: "10px",
+              width: "7vw",
+            }}
+            id="demo-positioned-button"
+            aria-controls={open ? "demo-positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+          >
+            Log In
+          </Button>
+          {log && <Login setlog={setlog} />}
+          <Button
+            onClick={opensign}
+            sx={{
+              display: { xs: "none", md: "block" },
+
+              bgcolor: " #219ebc",
+              color: "black",
+              padding: "10px",
+              width: "7vw",
+            }}
+            id="demo-positioned-button"
+            aria-controls={open ? "demo-positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+          >
+            Sign Up
+          </Button>
+          {sign && <Signup setsign={setsign} />}
+        </Stack>
       </Stack>
-      </Stack>
+      <IconButton sx={{ display: { xs: "blcok", md: "none" } }}>
+        <SearchIcon />
+      </IconButton>
     </Box>
   );
 }
