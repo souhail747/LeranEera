@@ -11,7 +11,7 @@ export default function PasswordMeterInput() {
   return (
     <Stack spacing={0.5} sx={{ 
       '--hue': Math.min(value.length * 10, 120),
-      width: { xs: "55vw", md: "35vw" },
+      width: { xs: "65vw", md: "35vw" },
 
       margin:"auto",
       }}>

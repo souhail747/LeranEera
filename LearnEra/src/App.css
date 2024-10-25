@@ -3,8 +3,8 @@ body{
 padding: 0;
 }
 button {
-    all: unset; /* Resets all properties to their initial values */
-    display: block; /* Makes the button behave like a block element (optional) */
+    all: unset;
+    display: block;
   
 }
 button:hover{
@@ -14,11 +14,3 @@ button:hover{
   width: 100%;
   height: 100%;
 }
-
-/* .css-1am0y6y {
-  width: 100%;
-  height: 100%;
-  background-color: red;
-
-padding: 0;
-} */

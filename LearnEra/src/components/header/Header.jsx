@@ -8,10 +8,13 @@ import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import { useState } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Login from "../Login";
-import Signup from "../Signup/Signup";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from '@mui/icons-material/Menu';
+import PhMenu from "./PhMenu";
+import Login from "../Login";
+import Signup from "../Signup/Signup";
+
+
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -44,15 +47,24 @@ const Search = styled("div")(({ theme }) => ({
   },
 }));
 
+
 export default function Header() {
+
   const [log, setlog] = useState(false);
   const openlog = () => {
     setlog(true);
   };
+
   const [sign, setsign] = useState(false);
   const opensign = () => {
     setsign(true);
   };
+
+  const [first, setfirst] = useState(false);
+  const handleMenu = () => {
+    setfirst(true);
+  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -61,20 +73,23 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
+    <>
     <Box
       component="header"
       className="border"
       sx={{
-        padding: "10px",
+     padding: "10px",
+
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
       }}
     >
-        <IconButton sx={{ display: { xs: "blcok", md: "none" } }}>
-        <MenuIcon />
+      <IconButton onClick={handleMenu}  sx={{ display: { xs: "blcok", md: "none" } }}>
+      <MenuIcon />
       </IconButton>
       <img width="200px" height="50vh" src="./src/Images/a.png" alt="" />
       <Search
@@ -103,7 +118,6 @@ export default function Header() {
       <Stack
         sx={{
           display: { xs: "none", md: "flex" },
-
           flexDirection: "row",
           gap: "25px",
         }}
@@ -164,6 +178,7 @@ export default function Header() {
               color: "black",
               padding: "10px",
               width: "7vw",
+              textAlign:'center'
             }}
             id="demo-positioned-button"
             aria-controls={open ? "demo-positioned-menu" : undefined}
@@ -182,6 +197,7 @@ export default function Header() {
               color: "black",
               padding: "10px",
               width: "7vw",
+              textAlign:'center'
             }}
             id="demo-positioned-button"
             aria-controls={open ? "demo-positioned-menu" : undefined}
@@ -197,5 +213,7 @@ export default function Header() {
         <SearchIcon />
       </IconButton>
     </Box>
+           { first &&  <PhMenu setfirst={setfirst} setsign={setsign} setlog={setlog} /> }            
+    </>
   );
 }

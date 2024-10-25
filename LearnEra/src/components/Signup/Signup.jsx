@@ -7,13 +7,14 @@ import TextField from "@mui/material/TextField";
 import PasswordMeterInput from "./PasswordMeterInput";
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-// eslint-disable-next-line react/prop-types
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles'
 function Signup({ setsign }) {
   const handleClose = () => {
     setsign(false);
   };
-  
-
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Dialog
       open={true}
@@ -23,8 +24,8 @@ function Signup({ setsign }) {
           boxShadow:
             "0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)",
           maxWidth: "100%",
-          width: { md: "85vw", xs: "85vw" },
-          height: { md: "90vh", xs: "95vh" },
+          width: { md: "85vw", xs: "75vw" },
+          height: { md: "90vh", xs: "80vh" },
           bgcolor: "white",
           padding: "0 20px 0 20px",
           borderRadius: "20px",
@@ -37,7 +38,7 @@ function Signup({ setsign }) {
         component={"img"}
         src="./src/Images/sign-up.png"
         alt=""
-        sx={{ width: "555px", display: { xs: "none", md: "block" } }}
+        sx={{ width: "45vw", display: { xs: "none", md: "block" } }}
       />
 
       <Box
@@ -46,7 +47,7 @@ function Signup({ setsign }) {
           margin: "auto 1.25vw",
           display: "flex",
           flexDirection: "column",
-          gap: { xs: "5vh", md: "5vh", sm: "5vh" },
+          gap: { xs: "3vh", md: "5vh", sm: "3vh" },
         }}
       >
         <Stack
@@ -62,8 +63,9 @@ function Signup({ setsign }) {
             label="First Name"
             variant="outlined"
             required
+            size={isSmallScreen ? "small" : "medium" }
             sx={{
-              width: { xs: "55vw", md: "16vw" },
+              width: { xs: "65vw", md: "16vw" },
               fontFamily: '"Open Sans", sans-serif',
               fontSize: "16px",
             }}
@@ -73,8 +75,9 @@ function Signup({ setsign }) {
             label=" Last Name"
             variant="outlined"
             required
+            size={isSmallScreen ? "small" : "medium" }
             sx={{
-              width: { xs: "55vw", md: "16vw" },
+              width: { xs: "65vw", md: "16vw" },
               fontFamily: '"Open Sans", sans-serif',
               fontSize: "16px",
             }}
@@ -86,8 +89,9 @@ function Signup({ setsign }) {
           type="email"
           variant="outlined"
           required
+          size={isSmallScreen ? "small" : "medium" }
           sx={{
-            width: { xs: "55vw", md: "35vw" },
+            width: { xs: "65vw", md: "35vw" },
             mx: "auto",
             fontFamily: '"Open Sans", sans-serif',
             fontSize: "16px",
@@ -98,8 +102,9 @@ function Signup({ setsign }) {
           label="Create UserName"
           variant="outlined"
           required
+          size={isSmallScreen ? "small" : "medium" }
           sx={{
-            width: { xs: "55vw", md: "35vw" },
+            width: { xs: "65vw", md: "35vw" },
             mx: "auto",
             fontFamily: '"Open Sans", sans-serif',
             fontSize: "16px",
