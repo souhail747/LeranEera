@@ -20,7 +20,6 @@ function Login ({setlog}) {
         onClose={handleClose} 
         PaperProps={{sx:{
             boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1)',
-
             bgcolor : "white",
             padding : {md:"0 20px 0 20px", xs:"10px 20px 20px 20px"},
             borderRadius :"30px",
