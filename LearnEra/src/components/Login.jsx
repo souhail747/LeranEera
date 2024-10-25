@@ -11,10 +11,17 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 
-function Login ({setlog}) {
+// eslint-disable-next-line react/prop-types
+function Login ({setlog ,setsign}) {
     const handleClose = () => {
         setlog(false);
     }
+    const handleSignUp = () => {
+        handleClose();
+        setsign(true);
+    }
+
+
     return (
         <Dialog open={true}
         onClose={handleClose} 
@@ -150,7 +157,7 @@ function Login ({setlog}) {
             >
             {'Forgot password?'}
             </Link>
-            <Link href="#" underline="hover"
+            <Link onClick={handleSignUp} href="#" underline="hover"
             sx={{
                 fontFamily: '"Open Sans", sans-serif',
                 fontSize : "0.9em",
