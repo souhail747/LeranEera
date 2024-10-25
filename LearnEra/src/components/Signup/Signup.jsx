@@ -9,10 +9,15 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles'
-function Signup({ setsign }) {
+// eslint-disable-next-line react/prop-types
+function Signup({ setsign ,setlog }) {
   const handleClose = () => {
     setsign(false);
   };
+  const handleLog =()=>{
+    handleClose();
+    setlog(true);
+  }
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
@@ -124,7 +129,7 @@ function Signup({ setsign }) {
         >
           Sign Up
         </Button>
-        <Link
+        <Link onClick={handleLog} 
           href="#"
           underline="hover"
           sx={{

@@ -187,7 +187,7 @@ export default function Header() {
           >
             Log In
           </Button>
-          {log && <Login setlog={setlog} />}
+          {log && <Login setlog={setlog} setsign={setsign} />}
           <Button
             onClick={opensign}
             sx={{
@@ -206,7 +206,7 @@ export default function Header() {
           >
             Sign Up
           </Button>
-          {sign && <Signup setsign={setsign} />}
+          {sign && <Signup setlog={setlog} setsign={setsign} />}
         </Stack>
       </Stack>
       <IconButton sx={{ display: { xs: "blcok", md: "none" } }}>
