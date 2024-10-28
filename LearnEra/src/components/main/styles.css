@@ -58,4 +58,16 @@ body {
 .mySwiper:hover .swiper-button-next-custom,
 .mySwiper:hover .swiper-button-prev-custom {
  
-  color:  #2cccc4;
+  color:  #2cccc4;}
+
+  .active {
+    background-color:#219EBC !important;
+    color:white !important; 
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .active,.mybutton:hover {
+    background-color: #95a3b2; /* Change the background color on hover */
+    transform: scale(1.1);
+  }
+  
