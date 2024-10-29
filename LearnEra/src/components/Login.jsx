@@ -39,7 +39,7 @@ function Login ({setlog ,setsign}) {
             sx={{
                 margin : "5px auto 0 auto",
                 width: {md:"108px", xs:"90px"},
-                height: {md:"108px", xs:"90px"},
+                height: {md:"84px", xs:"90px"},
                 color : "#2cccc4",
             }}
             >

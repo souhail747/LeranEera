@@ -58,4 +58,25 @@ body {
 .mySwiper:hover .swiper-button-next-custom,
 .mySwiper:hover .swiper-button-prev-custom {
  
-  color:  #2cccc4;
+  color:  #2cccc4;}
+
+  .active {
+    padding:  8px 15px;
+    border-radius: 20px;
+    width: fit-content;
+    background-color:#219EBC ;
+    color:white ; 
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  .mybutton {
+    padding:  5px 15px;
+    background-color: #dfdfdf;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .mybutton:hover {
+    background-color: #95a3b2; /* Change the background color on hover */
+  }
+  .fbox button:first-child {
+    margin-left: 200px;
+  }
