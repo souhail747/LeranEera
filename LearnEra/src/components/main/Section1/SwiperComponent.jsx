@@ -18,6 +18,7 @@ export default function SwiperComponent() {
         sx={{
           width: "25vw",
           height: "100vh",
+        
           maxHeight:"100vh"
         }}
       >
