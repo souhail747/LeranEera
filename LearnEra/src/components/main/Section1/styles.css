@@ -61,13 +61,22 @@ body {
   color:  #2cccc4;}
 
   .active {
-    background-color:#219EBC !important;
-    color:white !important; 
+    padding:  8px 15px;
+    border-radius: 20px;
+    width: fit-content;
+    background-color:#219EBC ;
+    color:white ; 
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   }
-  
-  .active,.mybutton:hover {
-    background-color: #95a3b2; /* Change the background color on hover */
-    transform: scale(1.1);
+  .mybutton {
+    padding:  5px 15px;
+    background-color: #dfdfdf;
+    border-radius: 20px;
+    width: fit-content;
   }
-  
+  .mybutton:hover {
+    background-color: #95a3b2; /* Change the background color on hover */
+  }
+  .fbox button:first-child {
+    margin-left: 200px;
+  }

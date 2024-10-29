@@ -8,11 +8,23 @@ import AllCards from "./components/main/Section1/AllCards";
 /* import BigCard from "./components/main/BigCard";
  */
 function App() {
- 
-
   return (
     <>
+<<<<<<< HEAD
    <BigCard/>
+=======
+      <Header />
+      <Stack flexDirection={"row"} >
+        <AllCards />
+        <Box
+          sx={{
+            width: "25vw",
+          }}
+        >
+        <SwiperComponent />
+        </Box>
+      </Stack>
+>>>>>>> 1f7d8d9cda460c1e63e44d90df2223c1737ef6cc
     </>
   );
 }
