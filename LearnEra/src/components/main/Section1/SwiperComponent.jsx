@@ -17,7 +17,7 @@ export default function SwiperComponent() {
       <Box
         sx={{
           width: "25vw",
-          height: "100vh",
+          height: "88vh",
         
           maxHeight:"100vh"
         }}

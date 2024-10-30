@@ -78,7 +78,7 @@ export default function Header() {
     <>
     <Box
       component="header"
-      className="border"
+      
       sx={{
      padding: "10px",
       

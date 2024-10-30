@@ -10,11 +10,10 @@ export default function MainSection() {
     <AllCards/>
   <Box
        sx={{
-         width: "25vw",
+         width: {md:"25vw",xs:"0"}
        }}
      >
        <SwiperComponent />
      </Box>
-     x
-   </Stack>   )
+        </Stack>   )
 }
