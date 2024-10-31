@@ -7,14 +7,14 @@ import CardActionArea from "@mui/material/CardActionArea";
 import Link from "@mui/material/Link";
 import Rating from "@mui/material/Rating";
 // eslint-disable-next-line react/prop-types
-export default function ActionAreaCard({ img, /* desc */ cat,formater }) {
+export default function ActionAreaCard({ img, desc ,formater }) {
   return (
     <Card
       sx={{
         maxWidth: 550,
         maxHeight: 350,
-        width: "200px",
-        height: "200px",
+        width: {md:"200px",xs:"150px"}, 
+        height: {md:"200px",xs:"150px"},
         /*         margin:'100px auto',
 tawa howa bch ykoun f blasa o5ra 3lch ta3ti f zok oma f margin ta3bt
  */ transition: "0.5s ease",
@@ -26,12 +26,12 @@ tawa howa bch ykoun f blasa o5ra 3lch ta3ti f zok oma f margin ta3bt
       }}
     >
       <CardActionArea>
-        <CardMedia component="img" height="80" image={img} alt="green iguana" />
+        <CardMedia component="img"sx={{ height: {md:"80px",xs:"50px"},}} image={img} alt="green iguana" />
         <CardContent
           sx={{
             margin: "0",
             padding: "0",
-            p:"12px",
+            p:{md:"6px",xs:"5px"},
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
@@ -42,12 +42,12 @@ tawa howa bch ykoun f blasa o5ra 3lch ta3ti f zok oma f margin ta3bt
           <Typography
             gutterBottom
             component="div"
-            sx={{ margin: 0, fontSize: "1.5em" }}
+            sx={{ margin: 0, fontSize:  {md:"1.5em",xs:"1em"},}}
           >
             {" "}
             React full course
           </Typography>
-          <Rating   sx={{fontSize:"1.5em"}} name="read-only" value={5} readOnly />
+          <Rating   sx={{fontSize:  {md:"1.5em",xs:"1em"}}} name="read-only" value={5} readOnly />
           <Link
             href="#"
             underline="hover"
@@ -56,13 +56,12 @@ tawa howa bch ykoun f blasa o5ra 3lch ta3ti f zok oma f margin ta3bt
               fontSize: "0.9em",
               width: "max-content",
               display: "block",
-              marginBottom: "10px",
             }}
           >
             {formater}
           </Link>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            {cat}
+          <Typography  sx={{ fontSize:"1em",textTransform:"capitalize",color: "black" }}>
+            {desc}
           </Typography>
         </CardContent>
       </CardActionArea>

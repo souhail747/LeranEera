@@ -51,7 +51,7 @@ export default function Filter({ onCategoryChange }) {
   ];
 
   return (
-    <div  className="border"
+    <div
       style={{
         width: "100%",
         display: "flex",

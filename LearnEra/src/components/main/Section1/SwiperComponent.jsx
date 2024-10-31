@@ -11,13 +11,18 @@ import './styles.css';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Box from '@mui/material/Box';
 
-export default function SwiperComponent() {
+// eslint-disable-next-line react/prop-types
+export default function SwiperComponent({w,h,ispc}) {
   return (
     <>
-      <Box
+      <Box  
         sx={{
-          width: "25vw",
-          height: "88vh",
+          width: w,
+          height: h,
+       /*    width: "100vw",
+          height: "18vh",
+ */
+          
         
           maxHeight:"100vh"
         }}
@@ -49,9 +54,13 @@ export default function SwiperComponent() {
           </SwiperSlide>
           
          
-          {/* Custom Navigation Buttons */}
-          <div className="swiper-button-next-custom swiper-button-next"></div>
-          <div className="swiper-button-prev-custom swiper-button-prev"></div>
+          {!ispc &&
+              <div>
+
+            <div className="swiper-button-next-custom swiper-button-next"></div>
+          <div className="swiper-button-prev-custom swiper-button-prev"></div> 
+          </div>
+          }
         </Swiper>
       </Box>
     </>

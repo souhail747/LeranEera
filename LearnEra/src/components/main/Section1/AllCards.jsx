@@ -1,24 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ActionAreaCard from "./ActionAreaCard";
 import Stack from "@mui/material/Stack";
 import Filter from "./Filter";
 import Box from "@mui/material/Box";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import SwiperComponent from "./SwiperComponent";
 const AllCards = () => {
   const [selectedCategory, setSelectedCategory] = useState("All courses");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setCurrentIndex(0); 
+    setCurrentIndex(0);
   };
+  const [isPC, setIsPC] = useState(window.innerWidth >= 768);
+  const [CardNumbers, setCardNumbers] = useState(
+    window.innerWidth >= 768 ? 6 : 4
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isPC = window.innerWidth >= 768;
+      setIsPC(isPC);
+      setCardNumbers(isPC ? 6 : 4);
+    };
+
+    // Set initial value
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const cards = [
     {
       id: 1,
       img: "./src/Images/react.png",
-      desc: "1",
+      desc: "Its  a  web formation A to z reactjs.",
       formater: "souhail",
       cat: "web",
     },
@@ -162,6 +184,27 @@ const AllCards = () => {
       formater: "souhail",
       cat: "web",
     },
+    {
+      id: 22,
+      img: "./src/Images/react.png",
+      desc: "21",
+      formater: "souhail",
+      cat: "web",
+    },
+    {
+      id: 23,
+      img: "./src/Images/react.png",
+      desc: "21",
+      formater: "souhail",
+      cat: "web",
+    },
+    {
+      id: 24,
+      img: "./src/Images/react.png",
+      desc: "21",
+      formater: "souhail",
+      cat: "web",
+    },
   ];
 
   const filteredCards =
@@ -171,121 +214,210 @@ const AllCards = () => {
           (card) => card.cat.toLowerCase() === selectedCategory.toLowerCase()
         );
 
-  const cardsToShow = filteredCards.slice(currentIndex, currentIndex + 6);
+  const cardsToShow = filteredCards.slice(
+    currentIndex,
+    currentIndex + CardNumbers
+  );
 
   const handleShowMore = () => {
-    if (currentIndex + 6 < filteredCards.length) {
-      setCurrentIndex(currentIndex + 6);
+    if (currentIndex + CardNumbers < filteredCards.length) {
+      setCurrentIndex(currentIndex + CardNumbers);
     } else {
       setCurrentIndex(0);
     }
   };
 
   const handleShowLess = () => {
-    if (currentIndex - 6 >= 0) {
-      setCurrentIndex(currentIndex - 6);
+    if (currentIndex - CardNumbers >= 0) {
+      setCurrentIndex(currentIndex - CardNumbers);
     } else {
-      setCurrentIndex(0); 
+      setCurrentIndex(0);
     }
   };
 
   return (
-    <Box  className="border2"
+    <Box
       display={"flex"}
       flexDirection={"column"}
-      gap={4}
-     
-  /*     alignItems={"center"}
+      /*     alignItems={"center"}
       justifyContent={"center"} */
-      sx={{ width: "72vw", position: "relative", margin: "0 auto" }}
+      sx={{
+        width: "100vw",
+        height: "90h",
+        position: "relative",
+        margin: "0 auto",
+      }}
     >
       <Filter onCategoryChange={handleCategoryChange} />
       <Stack
         justifyContent={"center"}
         alignItems={"center"}
         flexDirection={"row"}
+        mt="35px"
       >
-             {/* Box fleche ISaar */}
-        <Box
-          sx={{
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "55px",
-            width: "55px",
-          }}
-        >
-          {currentIndex > 0 && (
-            <ArrowBackIcon
-              onClick={handleShowLess}
-              sx={{
-                maxWidth: "55px",
-                width: "55px",
-                fontSize: "40px",
-                padding: "10px",
-                borderRadius: "50px",
-                "&:hover": {
-                 
-                  color: "#2cccc4",
-                  cursor: "pointer",
-                },
-              }}
-            />
-          )}
-        </Box>
-
-        <Stack className="border2"
+        {/* Box fleche ISaar */}
+        {isPC && (
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              maxWidth: "155px",
+              width: "155px",
+            }}
+          >
+            {currentIndex > 0 && (
+              <ArrowBackIcon
+                onClick={handleShowLess}
+                sx={{
+                  maxWidth: "55px",
+                  width: "55px",
+                  fontSize: "40px",
+                  padding: "10px",
+                  borderRadius: "50px",
+                  "&:hover": {
+                    color: "#2cccc4",
+                    cursor: "pointer",
+                  },
+                }}
+              />
+            )}
+          </Box>
+        )}
+        {/* Caards */}
+       
+       
+        <Stack
+        sx={{bgcolor:"#e5e5e5",borderRadius:"20px"}}
+        boxShadow= "0 4px 18px black"// Custom shadow
+          py={"10px"}
           flexDirection={"row"}
           alignItems={"center"}
           justifyContent={"center"}
           gap={4}
-flexShrink={55}          
           flexWrap={"wrap"}
-/*           sx={{ width: "100%", height:"100%",minheight: "800px"}}
- */        >
+        
+        >
           {cardsToShow.map((card) => (
             <ActionAreaCard
               key={card.id}
               img={card.img}
-/*               desc={card.desc}
- */              formater={card.formater}
-              cat={card.cat}
+              desc={card.desc}
+              formater={card.formater}
             />
           ))}
         </Stack>
-        
-        {/* Box fleche Imiin */}
-        <Box
-          sx={{
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            maxWidth: "55px",
-            width: "55px",
-          }}
-        >
-          {currentIndex + 6 < filteredCards.length && (
-            <ArrowForwardIcon
-              onClick={handleShowMore}
-              sx={{
-                padding: "10px",
-                fontSize: "40px",
 
-                maxWidth: "55px",
-                width: "55px",
-                borderRadius: "50px",
-                "&:hover": {
-                 
-                  color: "#2cccc4",
-                  cursor: "pointer",
-                },
-              }}
-            />
-          )}
-        </Box>
+        {/* Box fleche Imiin */}
+        {isPC && (
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+
+              maxWidth: "155px",
+              width: "155px",
+            }}
+          >
+            {currentIndex + 6 < filteredCards.length && (
+              <ArrowForwardIcon
+                onClick={handleShowMore}
+                sx={{
+                  fontSize: "40px",
+
+                  maxWidth: "55px",
+                  width: "55px",
+                  borderRadius: "50px",
+                  "&:hover": {
+                    color: "#2cccc4",
+                    cursor: "pointer",
+                  },
+                }}
+              />
+            )}
+          </Box>
+        )}
       </Stack>
+      {!isPC && (
+        <Stack
+          sx={{ height: "100%" }}
+          flexDirection={"row"}
+          alignContent={"center"}
+          justifyContent={"center"}
+          my="10px"
+        >
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: { md: "center", xs: "flex-start" },
+
+              maxWidth: "155px",
+              width: "155px",
+            }}
+          >
+            {currentIndex > 0 && (
+              <ArrowBackIcon
+                onClick={handleShowLess}
+                sx={{
+                  fontSize: "40px",
+
+                  maxWidth: "55px",
+                  width: "55px",
+                  borderRadius: "50px",
+                  "&:hover": {
+                    color: "#2cccc4",
+                    cursor: "pointer",
+                  },
+                }}
+              />
+            )}
+          </Box>
+
+          <Box
+            sx={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: { md: "center", xs: "flex-start" },
+
+              maxWidth: "155px",
+              width: "155px",
+            }}
+          >
+            {currentIndex + 6 < filteredCards.length && (
+              <ArrowForwardIcon
+                onClick={handleShowMore}
+                sx={{
+                  fontSize: "40px",
+
+                  maxWidth: "55px",
+                  width: "55px",
+                  borderRadius: "50px",
+                  "&:hover": {
+                    color: "#2cccc4",
+                    cursor: "pointer",
+                  },
+                }}
+              />
+            )}
+          </Box>
+        </Stack>
+      )}
+      {!isPC && (
+        <Box  sx={{height:"100%"}}>
+          
+          <SwiperComponent w="100vw" h="30vh"  ispc={!isPC}/>{" "}
+        </Box>
+  
+
+      )}
+
+       
     </Box>
   );
 };

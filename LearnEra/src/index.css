@@ -11,3 +11,12 @@
   border: 2px solid blue;
 
 }
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+}

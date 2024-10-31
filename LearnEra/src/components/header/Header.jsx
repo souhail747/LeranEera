@@ -81,8 +81,8 @@ export default function Header() {
       
       sx={{
      padding: "10px",
-      
-        display: "flex",
+      height:"7vh"
+,        display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -91,8 +91,11 @@ export default function Header() {
       <IconButton onClick={handleMenu}  sx={{ display: { xs: "blcok", md: "none" } }}>
       <MenuIcon />
       </IconButton>
-      <img width="200px" height="50vh" src="./src/Images/a.png" alt="" />
-      <Search
+      {/* Link from react */}
+     
+      <img width="200px" height="50vh" src="./src/Images/a.png" alt="Logo" />
+      
+     <Search
         sx={{
           display: { xs: "none", md: "flex" },
 
