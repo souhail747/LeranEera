@@ -8,7 +8,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
-import Comment from "./comment";
+import Comment from "./Comment";
 
 export default function BigCard() {
   const buttonArray = ["Web", "Python", "Next js"];

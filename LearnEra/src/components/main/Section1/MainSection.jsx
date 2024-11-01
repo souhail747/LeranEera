@@ -8,13 +8,12 @@ export default function MainSection() {
     <Stack flexDirection={"row"} flexWrap={"nowrap"}>
 
     <AllCards/>
-  <Box
+  <Box className="hide-on-mobile"
        sx={{
-         width: "25vw",
+         width: {md:"25vw",xs:"100vw",sm:"100vw"}
        }}
      >
-       <SwiperComponent />
+       <SwiperComponent ispc={false} w="25vw" h="88vh" />
      </Box>
-     x
-   </Stack>   )
+        </Stack>   )
 }
