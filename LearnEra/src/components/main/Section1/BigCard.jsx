@@ -25,6 +25,7 @@ export default function BigCard() {
           borderRadius: "20px",
           display: "flex",
           flexDirection: "column",
+
         },
       }}
     >

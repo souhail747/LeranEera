@@ -10,8 +10,8 @@ import AllCards from "./components/main/Section1/AllCards";
 function App() {
   return (
     <>
-    <Header/>
-    <MainSection/>
+    <Header ></Header>
+    <MainSection></MainSection>
     </>
   );
 }

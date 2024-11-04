@@ -75,25 +75,31 @@ export default function Filter({ onCategoryChange }) {
       />
       <Box
         ref={scrollContainerRef}
-        className="fbox"
         sx={{
-          maxWidth: "800px",
-          display: "flex",
-          justifyContent: "center",
-          gap: 2,
-          overflow: "hidden",
-          hoverflowX: "auto",
+          width: "800px",
+          overflow : 'auto',
+          overflowX : 'hidden',
         }}
       >
-        {buttons.map((button, index) => (
-          <button
-            key={index}
-            className={` ${index === activeIndex ? "active" : "mybutton"}`}
-            onClick={() => handleButtonClick(index, button.label)}
-          >
-            {button.label}
-          </button>
-        ))}
+        <Box
+          sx={{
+            width: "fit-content",
+            display : 'flex',
+            alignContent : 'center',
+            alignItems : 'center',
+            gap : '20px',
+          }}
+        >
+          {buttons.map((button, index) => (
+            <button
+              key={index}
+              className={` ${index === activeIndex ? "active" : "mybutton"}`}
+              onClick={() => handleButtonClick(index, button.label)}
+            >
+              {button.label}
+            </button>
+          ))}
+        </Box>
       </Box>
       <ArrowForwardIcon
         onClick={handleScrollR}
