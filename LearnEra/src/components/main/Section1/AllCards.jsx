@@ -6,7 +6,13 @@ import Box from "@mui/material/Box";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SwiperComponent from "./SwiperComponent";
+import { Button } from "@mui/material";
+import BigCard from "./BigCard";
 const AllCards = () => {
+  const [big, setbig] = useState(false);
+  const openbig = () => {
+    setbig(true);
+  };
   const [selectedCategory, setSelectedCategory] = useState("All courses");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -16,14 +22,14 @@ const AllCards = () => {
   };
   const [isPC, setIsPC] = useState(window.innerWidth >= 768);
   const [CardNumbers, setCardNumbers] = useState(
-    window.innerWidth >= 768 ? 6 : 4
+    window.innerWidth >= 768 ? 8 : 4
   );
 
   useEffect(() => {
     const handleResize = () => {
       const isPC = window.innerWidth >= 768;
       setIsPC(isPC);
-      setCardNumbers(isPC ? 6 : 4);
+      setCardNumbers(isPC ? 8 : 4);
     };
 
     // Set initial value
@@ -231,7 +237,7 @@ const AllCards = () => {
     if (currentIndex - CardNumbers >= 0) {
       setCurrentIndex(currentIndex - CardNumbers);
     } else {
-      setCurrentIndex(0);
+      setCurrentIndex(filteredCards.length-8);
     }
   };
 
@@ -267,7 +273,7 @@ const AllCards = () => {
               width: "155px",
             }}
           >
-            {currentIndex > 0 && (
+            {currentIndex > -1 && (
               <ArrowBackIcon
                 onClick={handleShowLess}
                 sx={{
@@ -289,8 +295,7 @@ const AllCards = () => {
        
        
         <Stack
-        sx={{bgcolor:"#e5e5e5",borderRadius:"20px"}}
-        boxShadow= "0 4px 18px black"// Custom shadow
+        sx={{borderRadius:"20px"}}
           py={"10px"}
           flexDirection={"row"}
           alignItems={"center"}
@@ -300,15 +305,20 @@ const AllCards = () => {
         
         >
           {cardsToShow.map((card) => (
+            <button
+            onClick={openbig}
+            >
             <ActionAreaCard
+              
               key={card.id}
               img={card.img}
               desc={card.desc}
               formater={card.formater}
             />
+            </button>
           ))}
         </Stack>
-
+          {big && <BigCard setbig={setbig} />}
         {/* Box fleche Imiin */}
         {isPC && (
           <Box

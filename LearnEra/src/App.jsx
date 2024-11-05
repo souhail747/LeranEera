@@ -4,14 +4,14 @@ import "./App.css";
 import Header from "./components/header/Header";
 import BigCard from "./components/main/Section1/BigCard";
 import AllCards from "./components/main/Section1/AllCards";
+import Footer from "./components/footer/Footer";
 ;
 /* import BigCard from "./components/main/BigCard";
  */
 function App() {
   return (
     <>
-    <Header ></Header>
-    <MainSection></MainSection>
+    <Footer></Footer>
     </>
   );
 }

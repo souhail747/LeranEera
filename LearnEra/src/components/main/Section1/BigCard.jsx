@@ -10,11 +10,15 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import Comment from "./Comment";
 
-export default function BigCard() {
+export default function BigCard({setbig}) {
+  const handlclose = () => {
+    setbig(false);
+  }
   const buttonArray = ["Web", "Python", "Next js"];
   return (
     <Dialog
       open={true}
+      onClose={handlclose}
       PaperProps={{
         sx: {
           boxShadow:
